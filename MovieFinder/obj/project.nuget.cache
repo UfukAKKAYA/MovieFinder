@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "IgV2h8Qwz1a91cXVPWPWqGEcZO/eibo2KiP2o7wMjigRxq5fFuvg2eKdn7Gr+BILE8gOdv+Vbm8yKNyZbHlStA==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\akkay\\OneDrive\\Masaüstü\\Disk\\Work\\YuksekLisans\\Dersler\\WebProgramlama\\MovieFinder\\MovieFinder\\MovieFinder.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\akkay\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\3.1.2\\microsoft.aspnetcore.app.ref.3.1.2.nupkg.sha512"
+  ],
+  "logs": []
+}
