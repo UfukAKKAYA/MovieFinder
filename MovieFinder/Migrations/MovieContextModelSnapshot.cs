@@ -15,8 +15,8 @@ namespace MovieFinder.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "3.1.30")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
+                .HasAnnotation("ProductVersion", "5.0.17")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
             modelBuilder.Entity("MovieFinder.Models.Category", b =>
@@ -41,9 +41,6 @@ namespace MovieFinder.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int?>("MovieId")
-                        .HasColumnType("int");
-
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
@@ -51,8 +48,6 @@ namespace MovieFinder.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("MovieId");
 
                     b.ToTable("Directors");
                 });
@@ -63,6 +58,9 @@ namespace MovieFinder.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int?>("DirectorId")
+                        .HasColumnType("int");
 
                     b.Property<string>("Logo")
                         .HasColumnType("nvarchar(max)");
@@ -81,6 +79,8 @@ namespace MovieFinder.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("DirectorId");
+
                     b.ToTable("Movies");
                 });
 
@@ -96,14 +96,16 @@ namespace MovieFinder.Migrations
 
                     b.HasIndex("CategoryId");
 
-                    b.ToTable("MovieCategory");
+                    b.ToTable("MovieCategories");
                 });
 
-            modelBuilder.Entity("MovieFinder.Models.Director", b =>
+            modelBuilder.Entity("MovieFinder.Models.Movie", b =>
                 {
-                    b.HasOne("MovieFinder.Models.Movie", null)
-                        .WithMany("Directors")
-                        .HasForeignKey("MovieId");
+                    b.HasOne("MovieFinder.Models.Director", "Director")
+                        .WithMany("Movies")
+                        .HasForeignKey("DirectorId");
+
+                    b.ToTable("Director");
                 });
 
             modelBuilder.Entity("MovieFinder.Models.MovieCategory", b =>
@@ -119,6 +121,25 @@ namespace MovieFinder.Migrations
                         .HasForeignKey("MovieId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.ToTable("Category");
+
+                    b.ToTable("Movie");
+                });
+
+            modelBuilder.Entity("MovieFinder.Models.Category", b =>
+                {
+                    b.ToTable("MovieCategories");
+                });
+
+            modelBuilder.Entity("MovieFinder.Models.Director", b =>
+                {
+                    b.ToTable("Movies");
+                });
+
+            modelBuilder.Entity("MovieFinder.Models.Movie", b =>
+                {
+                    b.ToTable("Categories");
                 });
 #pragma warning restore 612, 618
         }

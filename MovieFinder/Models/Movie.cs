@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -21,7 +22,7 @@ namespace MovieFinder.Models
 
         public ICollection<MovieCategory> Categories { get; set; }
 
-        public ICollection<Director> Directors { get; set; }
+        public Director Director { get; set; }
 
     }
 }

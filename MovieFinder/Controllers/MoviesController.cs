@@ -19,11 +19,30 @@ namespace MovieFinder.Controllers
             _context = context;
         }
         */
+
         // GET: Movies
         public async Task<IActionResult> Index()
         {
-            ViewData["Director"] = new SelectList(_context.Directors, "Id", "Name", "Surname");
             return View(await _context.Movies.ToListAsync());
+        }
+
+        // GET: Movies
+        public async Task<IActionResult> MovieDetail(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var movie = await _context.Movies
+                .Include(m => m.Director).FirstOrDefaultAsync(m => m.Id == id);
+
+            if (movie == null)
+            {
+                return NotFound();
+            }
+
+            return View(movie);
         }
 
         // GET: Movies/Details/5

@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\akkay\\OneDrive\\Masaüstü\\Disk\\Work\\YuksekLisans\\Dersler\\WebProgramlama\\MovieFinder\\MovieFinder\\MovieFinder.csproj": {}
+    "C:\\Users\\akkay\\OneDrive\\Masaüstü\\Disk\\YuksekLisans\\Dersler\\WebProgramlama\\HomeWork\\MovieFinder\\MovieFinder\\MovieFinder.csproj": {}
   },
   "projects": {
-    "C:\\Users\\akkay\\OneDrive\\Masaüstü\\Disk\\Work\\YuksekLisans\\Dersler\\WebProgramlama\\MovieFinder\\MovieFinder\\MovieFinder.csproj": {
+    "C:\\Users\\akkay\\OneDrive\\Masaüstü\\Disk\\YuksekLisans\\Dersler\\WebProgramlama\\HomeWork\\MovieFinder\\MovieFinder\\MovieFinder.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\akkay\\OneDrive\\Masaüstü\\Disk\\Work\\YuksekLisans\\Dersler\\WebProgramlama\\MovieFinder\\MovieFinder\\MovieFinder.csproj",
+        "projectUniqueName": "C:\\Users\\akkay\\OneDrive\\Masaüstü\\Disk\\YuksekLisans\\Dersler\\WebProgramlama\\HomeWork\\MovieFinder\\MovieFinder\\MovieFinder.csproj",
         "projectName": "MovieFinder",
-        "projectPath": "C:\\Users\\akkay\\OneDrive\\Masaüstü\\Disk\\Work\\YuksekLisans\\Dersler\\WebProgramlama\\MovieFinder\\MovieFinder\\MovieFinder.csproj",
+        "projectPath": "C:\\Users\\akkay\\OneDrive\\Masaüstü\\Disk\\YuksekLisans\\Dersler\\WebProgramlama\\HomeWork\\MovieFinder\\MovieFinder\\MovieFinder.csproj",
         "packagesPath": "C:\\Users\\akkay\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\akkay\\OneDrive\\Masaüstü\\Disk\\Work\\YuksekLisans\\Dersler\\WebProgramlama\\MovieFinder\\MovieFinder\\obj\\",
+        "outputPath": "C:\\Users\\akkay\\OneDrive\\Masaüstü\\Disk\\YuksekLisans\\Dersler\\WebProgramlama\\HomeWork\\MovieFinder\\MovieFinder\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -44,23 +44,27 @@
         "netcoreapp3.1": {
           "targetAlias": "netcoreapp3.1",
           "dependencies": {
-            "Microsoft.AspNetCore": {
+            "Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore": {
               "target": "Package",
-              "version": "[2.2.0, )"
+              "version": "[3.1.29, )"
+            },
+            "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[3.1.29, )"
+            },
+            "Microsoft.AspNetCore.Identity.UI": {
+              "target": "Package",
+              "version": "[3.1.29, )"
             },
             "Microsoft.EntityFrameworkCore.SqlServer": {
               "target": "Package",
-              "version": "[3.1.30, )"
-            },
-            "Microsoft.EntityFrameworkCore.Sqlite": {
-              "target": "Package",
-              "version": "[3.1.30, )"
+              "version": "[3.1.32, )"
             },
             "Microsoft.EntityFrameworkCore.Tools": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
               "suppressParent": "All",
               "target": "Package",
-              "version": "[3.1.30, )"
+              "version": "[3.1.32, )"
             },
             "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
               "target": "Package",

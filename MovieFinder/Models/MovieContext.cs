@@ -14,6 +14,8 @@ namespace MovieFinder.Models
 
         public DbSet<Category> Categories { get; set; }
 
+        public DbSet<MovieCategory> MovieCategories { get; set; }
+
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseSqlServer(@"Server=(localdb)\mssqllocaldb; Database=MovieFinderDb;Trusted_Connection=True;");

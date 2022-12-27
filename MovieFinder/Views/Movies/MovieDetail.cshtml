@@ -1,0 +1,54 @@
+﻿@model MovieFinder.Models.Movie
+
+@{
+    ViewData["Title"] = "MovieDetail";
+}
+
+<h1>MovieDetail</h1>
+
+<div>
+    <h4>Movie</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Logo)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Logo)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Trailer)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Trailer)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ProductionTime)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ProductionTime)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Score)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Score)
+        </dd>
+        <dt class="col-sm-2">
+            Director
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Director.Name) @Html.DisplayFor(model => model.Director.SurName)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>
