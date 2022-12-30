@@ -13,10 +13,10 @@
     @foreach (var item in Model)
     {
         <div class="card" id="movie">
-            <a asp-action="MovieDetail" asp-route-id="@item.Id">   <img src="/img/filmler/@item.Logo" alt="Avatar" style="width:100%"></a>
+            <a asp-action="MovieDetail" asp-route-id="@item.Id">   <img src="/img/filmler/@item.LogoUrl" alt="Avatar" style="width:100%"></a>
 
             <div class="container">
-                <h4><b>@Html.DisplayFor(modelItem => item.Name)</b></h4>
+                <h4><b>@Html.DisplayFor(modelItem => item.NameTr)</b></h4>
                 <p>Score: @Html.DisplayFor(modelItem => item.Score)</p>
             </div>
         </div>

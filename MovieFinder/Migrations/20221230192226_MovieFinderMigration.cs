@@ -1,5 +1,4 @@
-﻿using System;
-using Microsoft.EntityFrameworkCore.Migrations;
+﻿using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace MovieFinder.Migrations
 {
@@ -40,11 +39,14 @@ namespace MovieFinder.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Logo = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Trailer = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    ProductionTime = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    NameTr = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    NameEN = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    LogoUrl = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    TrailerUrl = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ProductionYear = table.Column<int>(type: "int", nullable: false),
                     Score = table.Column<float>(type: "real", nullable: false),
+                    DescriptionTR = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    DescriptionEN = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     DirectorId = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>

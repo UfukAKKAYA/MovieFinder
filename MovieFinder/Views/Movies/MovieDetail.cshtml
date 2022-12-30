@@ -4,35 +4,57 @@
     ViewData["Title"] = "MovieDetail";
 }
 
-<h1>MovieDetail</h1>
+@Html.DisplayFor(model => model.NameTr)
+
+<div class="line">
+
+    <div class="card" id="movie">
+        <a asp-action="MovieDetail" asp-route-id="@Model.Id">   <img src="/img/filmler/@Model.LogoUrl" alt="Avatar" style="width:100%"></a>
+
+        <div class="container">
+            <h4><b>@Html.DisplayFor(modelItem => Model.NameTr)</b></h4>
+            <p>Score: @Html.DisplayFor(modelItem => Model.Score)</p>
+        </div>
+    </div>
+
+</div>
+
 
 <div>
-    <h4>Movie</h4>
-    <hr />
+
     <dl class="row">
         <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Name)
+            @Html.DisplayNameFor(model => model.NameTr)
         </dt>
         <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Name)
+            @Html.DisplayFor(model => model.NameTr)
+        </dd>
+
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.LogoUrl)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.LogoUrl)
+        </dd>
+
+        <dt class="col-sm-2">
+            Director
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Director.Name) @Html.DisplayFor(model => model.Director.SurName)
+        </dd>
+
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.TrailerUrl)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.TrailerUrl)
         </dd>
         <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Logo)
+            @Html.DisplayNameFor(model => model.ProductionYear)
         </dt>
         <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Logo)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Trailer)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Trailer)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.ProductionTime)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.ProductionTime)
+            @Html.DisplayFor(model => model.ProductionYear)
         </dd>
         <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Score)
@@ -40,11 +62,12 @@
         <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Score)
         </dd>
+
         <dt class="col-sm-2">
-            Director
+            @Html.DisplayNameFor(model => model.DescriptionTR)
         </dt>
         <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Director.Name) @Html.DisplayFor(model => model.Director.SurName)
+            @Html.DisplayFor(model => model.DescriptionTR)
         </dd>
     </dl>
 </div>

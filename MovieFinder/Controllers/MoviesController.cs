@@ -19,7 +19,6 @@ namespace MovieFinder.Controllers
             _context = context;
         }
         */
-
         // GET: Movies
         public async Task<IActionResult> Index()
         {
@@ -43,7 +42,7 @@ namespace MovieFinder.Controllers
             }
 
             return View(movie);
-        }
+        } 
 
         // GET: Movies/Details/5
         public async Task<IActionResult> Details(int? id)
@@ -74,7 +73,7 @@ namespace MovieFinder.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Name,Logo,Trailer,ProductionTime,Score")] Movie movie)
+        public async Task<IActionResult> Create([Bind("Id,NameTr,NameEN,LogoUrl,TrailerUrl,ProductionYear,Score,DescriptionTR,DescriptionEN")] Movie movie)
         {
             if (ModelState.IsValid)
             {
@@ -106,7 +105,7 @@ namespace MovieFinder.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Logo,Trailer,ProductionTime,Score")] Movie movie)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,NameTr,NameEN,LogoUrl,TrailerUrl,ProductionYear,Score,DescriptionTR,DescriptionEN")] Movie movie)
         {
             if (id != movie.Id)
             {

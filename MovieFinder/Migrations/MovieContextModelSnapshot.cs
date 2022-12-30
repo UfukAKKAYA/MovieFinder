@@ -59,22 +59,31 @@ namespace MovieFinder.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<string>("DescriptionEN")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("DescriptionTR")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<int?>("DirectorId")
                         .HasColumnType("int");
 
-                    b.Property<string>("Logo")
+                    b.Property<string>("LogoUrl")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Name")
+                    b.Property<string>("NameEN")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime>("ProductionTime")
-                        .HasColumnType("datetime2");
+                    b.Property<string>("NameTr")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("ProductionYear")
+                        .HasColumnType("int");
 
                     b.Property<float>("Score")
                         .HasColumnType("real");
 
-                    b.Property<string>("Trailer")
+                    b.Property<string>("TrailerUrl")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
@@ -105,7 +114,7 @@ namespace MovieFinder.Migrations
                         .WithMany("Movies")
                         .HasForeignKey("DirectorId");
 
-                    b.ToTable("Director");
+                    //b.Navigation("Director");
                 });
 
             modelBuilder.Entity("MovieFinder.Models.MovieCategory", b =>
@@ -122,24 +131,24 @@ namespace MovieFinder.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.ToTable("Category");
+                    //b.Navigation("Category");
 
-                    b.ToTable("Movie");
+                    //b.Navigation("Movie");
                 });
 
             modelBuilder.Entity("MovieFinder.Models.Category", b =>
                 {
-                    b.ToTable("MovieCategories");
+                    //b.Navigation("MovieCategories");
                 });
 
             modelBuilder.Entity("MovieFinder.Models.Director", b =>
                 {
-                    b.ToTable("Movies");
+                    //b.Navigation("Movies");
                 });
 
             modelBuilder.Entity("MovieFinder.Models.Movie", b =>
                 {
-                    b.ToTable("Categories");
+                    //b.Navigation("Categories");
                 });
 #pragma warning restore 612, 618
         }
