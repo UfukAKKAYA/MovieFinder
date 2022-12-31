@@ -36,12 +36,24 @@ namespace MovieFinder.Controllers
             var movie = await _context.Movies
                 .Include(m => m.Director).FirstOrDefaultAsync(m => m.Id == id);
 
+            var catogory = await _context.MovieCategories.Include(c => c.Category).Where(m => m.MovieId == id).ToListAsync();
+
             if (movie == null)
             {
                 return NotFound();
             }
 
-            return View(movie);
+            MovieRecord movieRecord = new MovieRecord();
+            movieRecord.Categories = new List<Category>();
+            movieRecord.Movie = movie;
+            
+            
+            foreach(MovieCategory c in catogory)
+            {
+                movieRecord.Categories.Add(c.Category);
+            }                      
+
+            return View(movieRecord);
         }
 
         public async Task<IActionResult> DirectorMovies(int? id)
@@ -60,8 +72,42 @@ namespace MovieFinder.Controllers
             }
 
             var director = await _context.Directors.Where(d => d.Id == id).ToListAsync();
+           
+            if (director == null)
+            {
+                return NotFound();
+            }
 
             TempData["director"] = director[0].Name + director[0].SurName;
+
+            return View(movies);
+        } 
+        
+        public async Task<IActionResult> MovieCategory(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var catagoryMovies = await _context.MovieCategories.Include(m => m.Movie)
+                .Where(m => m.CategoryId == id).ToListAsync();
+
+            if (catagoryMovies == null)
+            {
+                return NotFound();
+            }
+
+            List<Movie> movies = new List<Movie>();
+
+            foreach(MovieCategory cm in catagoryMovies)
+            {
+                movies.Add(cm.Movie);
+            }
+
+            var categorys = await _context.Categories.Where(d => d.Id == id).ToListAsync();
+
+            TempData["category"] = categorys[0].Type.ToString();
 
             return View(movies);
         }

@@ -1,4 +1,4 @@
-﻿@model MovieFinder.Models.Movie
+﻿@model MovieFinder.Models.MovieRecord
 
 @{
     ViewData["Title"] = "MovieDetail";
@@ -51,11 +51,11 @@
 
     <div class="clearfix">
         <div class="movietitle" style="background-color:#000">
-            <h1 style="color: white; padding-left: 14px;"> @Html.DisplayFor(modelItem => Model.NameTr)</h1>
+            <h1 style="color: white; padding-left: 14px;"> @Html.DisplayFor(modelItem => Model.Movie.NameTr)</h1>
         </div>
         <div class="moviescore" style="background-color:#000;">
             <div class="row">
-                <div data-value=@Model.Score.ToString() id="" style="--circle-size: 80px;">
+                <div data-value=@Model.Movie.Score.ToString() id="" style="--circle-size: 80px;">
                     <div data-progress-type="POINT"></div>
                 </div>
             </div>
@@ -65,10 +65,10 @@
 
     <div class="clearfix">
         <div class="movieimg">
-            <a asp-action="MovieDetail" asp-route-id="@Model.Id">   <img src="/img/filmler/@Model.LogoUrl" alt="Avatar" width="353" height="470"></a>
+            <a asp-action="MovieDetail" asp-route-id="@Model.Movie.Id">   <img src="/img/filmler/@Model.Movie.LogoUrl" alt="Avatar" width="353" height="470"></a>
         </div>
         <div class="movietrailer">
-            <iframe width="753" height="472" src=@Model.TrailerUrl title=@Model.NameTr frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            <iframe width="753" height="472" src=@Model.Movie.TrailerUrl title=@Model.Movie.NameTr frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         </div>
     </div>
 
@@ -82,23 +82,37 @@
         <dl class="row" style="color:white">
 
             <dt class="col-sm-12" style="font-size: x-large">
+                Categori
+            </dt>
+            <dd class="col-sm-12" style="font-size: x-large">
+                @foreach (Category c in Model.Categories)
+                {
+
+                    <a asp-action="MovieCategory" asp-route-id="@c.Id">
+                        @c.Type.ToString();
+                    </a>
+                }
+            </dd>
+
+
+            <dt class="col-sm-12" style="font-size: x-large">
                 Director
             </dt>
             <dd class="col-sm-12" style="font-size: x-large">
-                <a asp-action="DirectorMovies" asp-route-id="@Model.Director.Id">
-                    @Html.DisplayFor(model => model.Director.Name) @Html.DisplayFor(model => model.Director.SurName)
-                </a>                    
+                <a asp-action="DirectorMovies" asp-route-id="@Model.Movie.Director.Id">
+                    @Html.DisplayFor(model => model.Movie.Director.Name) @Html.DisplayFor(model => model.Movie.Director.SurName)
+                </a>
             </dd>
 
             <dt class="col-sm-12" style="font-size:x-large">
-                @Html.DisplayNameFor(model => model.ProductionYear)
+                @Html.DisplayNameFor(model => model.Movie.ProductionYear)
             </dt>
             <dd class="col-sm-12" style="font-size:x-large">
-                @Html.DisplayFor(model => model.ProductionYear)
+                @Html.DisplayFor(model => model.Movie.ProductionYear)
             </dd>
 
-            <dd  class="text-justify" style="padding-left: 14px; padding-right:14px">
-                @Html.DisplayFor(model => model.DescriptionTR)
+            <dd class="text-justify" style="padding-left: 14px; padding-right:14px">
+                @Html.DisplayFor(model => model.Movie.DescriptionTR)
             </dd>
         </dl>
     </div>
@@ -111,7 +125,7 @@
 
 
 <div>
-    <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
+    <a asp-action="Edit" asp-route-id="@Model.Movie.Id">Edit</a> |
     <a asp-action="Index">Back to List</a>
 </div>
 
