@@ -4,74 +4,123 @@
     ViewData["Title"] = "MovieDetail";
 }
 
-@Html.DisplayFor(model => model.NameTr)
+<style>
+    * {
+        box-sizing: border-box;
+    }
 
-<div class="line">
+    .movieimg {
+        float: left;
+        width: 353px;
+    }
 
-    <div class="card" id="movie">
-        <a asp-action="MovieDetail" asp-route-id="@Model.Id">   <img src="/img/filmler/@Model.LogoUrl" alt="Avatar" style="width:100%"></a>
+    .movietrailer {
+        float: left;
+        width: 753px;
+    }
 
-        <div class="container">
-            <h4><b>@Html.DisplayFor(modelItem => Model.NameTr)</b></h4>
-            <p>Score: @Html.DisplayFor(modelItem => Model.Score)</p>
+    .movietitle {
+        float: left;
+        width: 1020px;
+        height: 60px;
+    }
+
+    .moviescore {
+        float: left;
+        width: 80PX;
+        height: 60px;
+    }
+
+    .movieinfo {
+        float: left;
+        width: 100%;
+        padding-top: 10px;
+        padding-right: 30px;
+        padding-bottom: 50px;
+        padding-left: 30px;
+    }
+
+    .clearfix::after {
+        content: "";
+        clear: both;
+        display: table;
+    }
+</style>
+
+<div style="background-color:#000">
+
+    <div class="clearfix">
+        <div class="movietitle" style="background-color:#000">
+            <h1 style="color: white; padding-left: 14px;"> @Html.DisplayFor(modelItem => Model.NameTr)</h1>
+        </div>
+        <div class="moviescore" style="background-color:#000;">
+            <div class="row">
+                <div data-value=@Model.Score.ToString() id="" style="--circle-size: 80px;">
+                    <div data-progress-type="POINT"></div>
+                </div>
+            </div>
         </div>
     </div>
 
+
+    <div class="clearfix">
+        <div class="movieimg">
+            <a asp-action="MovieDetail" asp-route-id="@Model.Id">   <img src="/img/filmler/@Model.LogoUrl" alt="Avatar" width="353" height="470"></a>
+        </div>
+        <div class="movietrailer">
+            <iframe width="753" height="472" src=@Model.TrailerUrl title=@Model.NameTr frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+    </div>
+
+
+
+</div>
+
+<div style="background-color:black">
+
+    <div class="movieinfo" style="background-color:black">
+        <dl class="row" style="color:white">
+
+            <dt class="col-sm-12" style="font-size: x-large">
+                Director
+            </dt>
+            <dd class="col-sm-12" style="font-size: x-large">
+                <a asp-action="DirectorMovies" asp-route-id="@Model.Director.Id">
+                    @Html.DisplayFor(model => model.Director.Name) @Html.DisplayFor(model => model.Director.SurName)
+                </a>                    
+            </dd>
+
+            <dt class="col-sm-12" style="font-size:x-large">
+                @Html.DisplayNameFor(model => model.ProductionYear)
+            </dt>
+            <dd class="col-sm-12" style="font-size:x-large">
+                @Html.DisplayFor(model => model.ProductionYear)
+            </dd>
+
+            <dd  class="text-justify" style="padding-left: 14px; padding-right:14px">
+                @Html.DisplayFor(model => model.DescriptionTR)
+            </dd>
+        </dl>
+    </div>
+
+
+
+
+
 </div>
 
 
-<div>
-
-    <dl class="row">
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.NameTr)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.NameTr)
-        </dd>
-
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.LogoUrl)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.LogoUrl)
-        </dd>
-
-        <dt class="col-sm-2">
-            Director
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Director.Name) @Html.DisplayFor(model => model.Director.SurName)
-        </dd>
-
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.TrailerUrl)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.TrailerUrl)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.ProductionYear)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.ProductionYear)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Score)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Score)
-        </dd>
-
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.DescriptionTR)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.DescriptionTR)
-        </dd>
-    </dl>
-</div>
 <div>
     <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
     <a asp-action="Index">Back to List</a>
 </div>
+
+
+
+
+
+
+
+
+
+

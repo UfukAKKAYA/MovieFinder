@@ -340,3 +340,4 @@ C:\Users\akkay\OneDrive\Masaüstü\Disk\YuksekLisans\Dersler\WebProgramlama\Movi
 C:\Users\akkay\OneDrive\Masaüstü\Disk\YuksekLisans\Dersler\WebProgramlama\MovieFinder\MovieFinder\obj\Debug\netcoreapp3.1\MovieFinder.dll
 C:\Users\akkay\OneDrive\Masaüstü\Disk\YuksekLisans\Dersler\WebProgramlama\MovieFinder\MovieFinder\obj\Debug\netcoreapp3.1\MovieFinder.pdb
 C:\Users\akkay\OneDrive\Masaüstü\Disk\YuksekLisans\Dersler\WebProgramlama\MovieFinder\MovieFinder\obj\Debug\netcoreapp3.1\MovieFinder.genruntimeconfig.cache
+C:\Users\akkay\OneDrive\Masaüstü\Disk\YuksekLisans\Dersler\WebProgramlama\MovieFinder\MovieFinder\obj\Debug\netcoreapp3.1\Razor\Views\Movies\DirectorMovies.cshtml.g.cs

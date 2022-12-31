@@ -42,7 +42,29 @@ namespace MovieFinder.Controllers
             }
 
             return View(movie);
-        } 
+        }
+
+        public async Task<IActionResult> DirectorMovies(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var movies = await _context.Movies
+                .Where(m => m.Director.Id == id).ToListAsync();
+
+            if (movies == null)
+            {
+                return NotFound();
+            }
+
+            var director = await _context.Directors.Where(d => d.Id == id).ToListAsync();
+
+            TempData["director"] = director[0].Name + director[0].SurName;
+
+            return View(movies);
+        }
 
         // GET: Movies/Details/5
         public async Task<IActionResult> Details(int? id)

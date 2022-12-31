@@ -9,6 +9,8 @@
     <a asp-action="Create">Yeni film oluştur</a>
 </p>
 
+<h1>@TempData["director"]</h1>
+
 <div class="line">
     @foreach (var item in Model)
     {
