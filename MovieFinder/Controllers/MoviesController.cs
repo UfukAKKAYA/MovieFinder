@@ -1,18 +1,21 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Localization;
 using MovieFinder.Models;
+using Newtonsoft.Json;
 
 namespace MovieFinder.Controllers
 {
     public class MoviesController : Controller
     {
         private readonly MovieContext _context = new MovieContext();
-
+        private readonly IStringLocalizer<MoviesController> _localizer;
         /*
         public MoviesController(MovieContext context)
         {
@@ -20,9 +23,22 @@ namespace MovieFinder.Controllers
         }
         */
         // GET: Movies
+
+
+        public MoviesController(IStringLocalizer<MoviesController> localizer)
+        {
+            _localizer = localizer;
+        }
+
+
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Movies.ToListAsync());
+            List<Movie> movies = new List<Movie>();
+            var hhtc = new HttpClient();
+            var response = await hhtc.GetAsync("https://localhost:44358/api/MovieApi");
+            string resString = await response.Content.ReadAsStringAsync();
+            movies = JsonConvert.DeserializeObject<List<Movie>>(resString);
+            return View(movies);
         }
 
         // GET: Movies
@@ -32,6 +48,17 @@ namespace MovieFinder.Controllers
             {
                 return NotFound();
             }
+
+            /*
+            MovieRecord movieRecord = new MovieRecord();
+            var hhtc = new HttpClient();
+            string getStr = "https://localhost:44358/api/MovieApi/" + id.ToString();
+            var response = await hhtc.GetAsync(getStr);
+            string resString = await response.Content.ReadAsStringAsync();
+            movieRecord = JsonConvert.DeserializeObject<MovieRecord>(resString);
+            */
+            
+
 
             var movie = await _context.Movies
                 .Include(m => m.Director).FirstOrDefaultAsync(m => m.Id == id);
@@ -51,8 +78,8 @@ namespace MovieFinder.Controllers
             foreach(MovieCategory c in catogory)
             {
                 movieRecord.Categories.Add(c.Category);
-            }                      
-
+            }
+            
             return View(movieRecord);
         }
 

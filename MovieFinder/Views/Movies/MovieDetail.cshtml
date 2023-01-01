@@ -2,7 +2,40 @@
 
 @{
     ViewData["Title"] = "MovieDetail";
+    string culture = "", uiculture = "";
 }
+
+
+@using Microsoft.AspNetCore.Builder
+@using Microsoft.AspNetCore.Localization
+@using Microsoft.Extensions.Options
+@using Microsoft.AspNetCore.Mvc.Localization
+
+@inject IViewLocalizer Localizer
+@inject IOptions<RequestLocalizationOptions> LocOptions
+
+@{
+    var requestCulture = Context.Features.Get<IRequestCultureFeature>();
+    var cultureItems = LocOptions.Value.SupportedUICultures
+        .Select(c => new SelectListItem { Value = c.Name, Text = c.DisplayName })
+        .ToList();
+}
+
+<label>Language:</label>
+<select onchange="SetCulture(this.value)" asp-for="@requestCulture.RequestCulture.UICulture.Name" asp-items="cultureItems">
+</select>
+
+<div asp-validation-summary="All" class="text-danger"></div>
+@{
+    
+    if (Context.Request.QueryString.HasValue)
+    {
+        string url = Context.Request.QueryString.Value;
+        culture = Context.Request.Query["culture"];
+        uiculture = Context.Request.Query["ui-culture"];
+    }
+}
+
 
 <style>
     * {
@@ -47,6 +80,7 @@
     }
 </style>
 
+
 <div style="background-color:#000">
 
     <div class="clearfix">
@@ -71,9 +105,6 @@
             <iframe width="753" height="472" src=@Model.Movie.TrailerUrl title=@Model.Movie.NameTr frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         </div>
     </div>
-
-
-
 </div>
 
 <div style="background-color:black">
@@ -82,7 +113,7 @@
         <dl class="row" style="color:white">
 
             <dt class="col-sm-12" style="font-size: x-large">
-                Categori
+                @Localizer["Category"]
             </dt>
             <dd class="col-sm-12" style="font-size: x-large">
                 @foreach (Category c in Model.Categories)
@@ -93,10 +124,8 @@
                     </a>
                 }
             </dd>
-
-
             <dt class="col-sm-12" style="font-size: x-large">
-                Director
+                @Localizer["Director"]
             </dt>
             <dd class="col-sm-12" style="font-size: x-large">
                 <a asp-action="DirectorMovies" asp-route-id="@Model.Movie.Director.Id">
@@ -105,29 +134,50 @@
             </dd>
 
             <dt class="col-sm-12" style="font-size:x-large">
-                @Html.DisplayNameFor(model => model.Movie.ProductionYear)
+                @Localizer["ProdictionYear"]
             </dt>
             <dd class="col-sm-12" style="font-size:x-large">
                 @Html.DisplayFor(model => model.Movie.ProductionYear)
             </dd>
 
             <dd class="text-justify" style="padding-left: 14px; padding-right:14px">
-                @Html.DisplayFor(model => model.Movie.DescriptionTR)
+                @if (culture == "en-US" || culture == "fr")
+                {
+                    @Html.DisplayFor(model => model.Movie.DescriptionEN)
+                }
+                else
+                {
+                    @Html.DisplayFor(model => model.Movie.DescriptionTR)
+                }
+
+
             </dd>
         </dl>
     </div>
-
-
-
-
-
 </div>
 
+@if (User.Identity.IsAuthenticated)
+{
+    if (User.IsInRole("Admin"))
+    {
+        <div>
+            <a asp-action="Edit" asp-route-id="@Model.Movie.Id">Edit</a> |
+            <a asp-action="Delete" asp-route-id="@Model.Movie.Id">Delete</a> |
+            <a asp-action="Index">Back to List</a>
+        </div>
+    }
+}
 
-<div>
-    <a asp-action="Edit" asp-route-id="@Model.Movie.Id">Edit</a> |
-    <a asp-action="Index">Back to List</a>
-</div>
+
+<script>
+    function SetCulture(selectedValue) {
+        var url = window.location.href.split('?')[0];
+        var culture = "?culture=" + selectedValue + "&ui-culture=" + selectedValue;
+        window.location.href = url + culture;
+    }
+</script>
+
+
 
 
 
