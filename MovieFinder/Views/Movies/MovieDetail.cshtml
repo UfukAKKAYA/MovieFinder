@@ -85,7 +85,16 @@
 
     <div class="clearfix">
         <div class="movietitle" style="background-color:#000">
-            <h1 style="color: white; padding-left: 14px;"> @Html.DisplayFor(modelItem => Model.Movie.NameTr)</h1>
+            @if (culture == "en-US" || culture == "fr")
+            {
+                <h1 style="color: white; padding-left: 14px;"> @Html.DisplayFor(modelItem => Model.Movie.NameEN)</h1>
+            }
+            else
+            {
+                <h1 style="color: white; padding-left: 14px;"> @Html.DisplayFor(modelItem => Model.Movie.NameTr)</h1>
+            }
+
+
         </div>
         <div class="moviescore" style="background-color:#000;">
             <div class="row">
