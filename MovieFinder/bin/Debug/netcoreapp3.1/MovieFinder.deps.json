@@ -304,6 +304,17 @@
         "runtime": {
           "MovieFinder.dll": {}
         },
+        "resources": {
+          "en/MovieFinder.resources.dll": {
+            "locale": "en"
+          },
+          "fr/MovieFinder.resources.dll": {
+            "locale": "fr"
+          },
+          "tr/MovieFinder.resources.dll": {
+            "locale": "tr"
+          }
+        },
         "compile": {
           "MovieFinder.dll": {}
         }

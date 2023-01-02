@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "lZybcGgYFuCuVqeRNNLuw0rG8wqvYACr6l5SBHVgCiTK+8QlsIAoquO5ifVKflpl615gJ2pLci5379OuNWxCNw==",
+  "dgSpecHash": "Efg9ej1uae1P/8znd5ZU1cPPEU8ZzotOuyD3q49eGri7vT8kQ5yWX9MjhKO5VekEZOY3a3ItMiPM05sMIkTCag==",
   "success": true,
-  "projectFilePath": "C:\\Users\\akkay\\OneDrive\\Masaüstü\\Disk\\YuksekLisans\\Dersler\\WebProgramlama\\yeni\\MovieFinder\\MovieFinder\\MovieFinder.csproj",
+  "projectFilePath": "C:\\Users\\akkay\\OneDrive\\Masaüstü\\Disk\\YuksekLisans\\Dersler\\WebProgramlama\\MovieFinder\\MovieFinder\\MovieFinder.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\akkay\\.nuget\\packages\\microsoft.aspnetcore.cryptography.internal\\3.1.32\\microsoft.aspnetcore.cryptography.internal.3.1.32.nupkg.sha512",
     "C:\\Users\\akkay\\.nuget\\packages\\microsoft.aspnetcore.cryptography.keyderivation\\3.1.32\\microsoft.aspnetcore.cryptography.keyderivation.3.1.32.nupkg.sha512",

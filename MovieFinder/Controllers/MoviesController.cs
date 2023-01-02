@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -60,6 +61,7 @@ namespace MovieFinder.Controllers
             
 
 
+
             var movie = await _context.Movies
                 .Include(m => m.Director).FirstOrDefaultAsync(m => m.Id == id);
 
@@ -90,6 +92,26 @@ namespace MovieFinder.Controllers
                 return NotFound();
             }
 
+            List<Movie> movies = new List<Movie>();
+            var hhtc = new HttpClient();
+            string getStr = "https://localhost:44358/api/DirectorApi/" + id.ToString();
+            var response = await hhtc.GetAsync(getStr);
+            string resString = await response.Content.ReadAsStringAsync();
+            movies = JsonConvert.DeserializeObject<List<Movie>>(resString);
+
+            var director = await _context.Directors.Where(d => d.Id == id).ToListAsync();
+
+            if (director == null)
+            {
+                return NotFound();
+            }
+
+            TempData["director"] = director[0].Name + director[0].SurName;
+
+            return View(movies);
+            /*
+
+
             var movies = await _context.Movies
                 .Where(m => m.Director.Id == id).ToListAsync();
 
@@ -108,6 +130,7 @@ namespace MovieFinder.Controllers
             TempData["director"] = director[0].Name + director[0].SurName;
 
             return View(movies);
+            */
         } 
         
         public async Task<IActionResult> MovieCategory(int? id)
@@ -158,6 +181,7 @@ namespace MovieFinder.Controllers
         }
 
         // GET: Movies/Create
+        [Authorize(Roles = "Admin")]
         public IActionResult Create()
         {
             return View();
@@ -180,6 +204,7 @@ namespace MovieFinder.Controllers
         }
 
         // GET: Movies/Edit/5
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -231,6 +256,7 @@ namespace MovieFinder.Controllers
         }
 
         // GET: Movies/Delete/5
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)

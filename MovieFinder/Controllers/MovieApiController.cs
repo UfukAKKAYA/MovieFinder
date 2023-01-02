@@ -59,7 +59,7 @@ namespace MovieFinder.Controllers
         [HttpPost]
         public IActionResult Post([FromBody] Movie m)
         {
-            _context.Add(m);
+            _context.Movies.Add(m);
             _context.SaveChangesAsync();
             return Ok();
         }
@@ -87,7 +87,7 @@ namespace MovieFinder.Controllers
             movie.Score = m.Score;
             movie.ProductionYear = m.ProductionYear;
 
-            _context.Update(m);
+            _context.Movies.Update(m);
             _context.SaveChanges();
             return Ok();
         }

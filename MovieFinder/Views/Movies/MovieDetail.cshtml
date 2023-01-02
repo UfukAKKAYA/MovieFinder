@@ -27,7 +27,7 @@
 
 <div asp-validation-summary="All" class="text-danger"></div>
 @{
-    
+
     if (Context.Request.QueryString.HasValue)
     {
         string url = Context.Request.QueryString.Value;
@@ -128,9 +128,13 @@
                 @Localizer["Director"]
             </dt>
             <dd class="col-sm-12" style="font-size: x-large">
-                <a asp-action="DirectorMovies" asp-route-id="@Model.Movie.Director.Id">
-                    @Html.DisplayFor(model => model.Movie.Director.Name) @Html.DisplayFor(model => model.Movie.Director.SurName)
-                </a>
+                @if (@Model.Movie.Director != null)
+                {
+                    <a asp-action="DirectorMovies" asp-route-id="@Model.Movie.Director.Id">
+                        @Html.DisplayFor(model => model.Movie.Director.Name) @Html.DisplayFor(model => model.Movie.Director.SurName)
+                    </a>
+                }
+
             </dd>
 
             <dt class="col-sm-12" style="font-size:x-large">

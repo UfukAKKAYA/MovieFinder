@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\akkay\\OneDrive\\Masaüstü\\Disk\\YuksekLisans\\Dersler\\WebProgramlama\\yeni\\MovieFinder\\MovieFinder\\MovieFinder.csproj": {}
+    "C:\\Users\\akkay\\OneDrive\\Masaüstü\\Disk\\YuksekLisans\\Dersler\\WebProgramlama\\MovieFinder\\MovieFinder\\MovieFinder.csproj": {}
   },
   "projects": {
-    "C:\\Users\\akkay\\OneDrive\\Masaüstü\\Disk\\YuksekLisans\\Dersler\\WebProgramlama\\yeni\\MovieFinder\\MovieFinder\\MovieFinder.csproj": {
+    "C:\\Users\\akkay\\OneDrive\\Masaüstü\\Disk\\YuksekLisans\\Dersler\\WebProgramlama\\MovieFinder\\MovieFinder\\MovieFinder.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\akkay\\OneDrive\\Masaüstü\\Disk\\YuksekLisans\\Dersler\\WebProgramlama\\yeni\\MovieFinder\\MovieFinder\\MovieFinder.csproj",
+        "projectUniqueName": "C:\\Users\\akkay\\OneDrive\\Masaüstü\\Disk\\YuksekLisans\\Dersler\\WebProgramlama\\MovieFinder\\MovieFinder\\MovieFinder.csproj",
         "projectName": "MovieFinder",
-        "projectPath": "C:\\Users\\akkay\\OneDrive\\Masaüstü\\Disk\\YuksekLisans\\Dersler\\WebProgramlama\\yeni\\MovieFinder\\MovieFinder\\MovieFinder.csproj",
+        "projectPath": "C:\\Users\\akkay\\OneDrive\\Masaüstü\\Disk\\YuksekLisans\\Dersler\\WebProgramlama\\MovieFinder\\MovieFinder\\MovieFinder.csproj",
         "packagesPath": "C:\\Users\\akkay\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\akkay\\OneDrive\\Masaüstü\\Disk\\YuksekLisans\\Dersler\\WebProgramlama\\yeni\\MovieFinder\\MovieFinder\\obj\\",
+        "outputPath": "C:\\Users\\akkay\\OneDrive\\Masaüstü\\Disk\\YuksekLisans\\Dersler\\WebProgramlama\\MovieFinder\\MovieFinder\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
